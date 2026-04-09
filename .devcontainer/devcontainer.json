@@ -1,0 +1,24 @@
+{
+	"name": "codespaces-blank",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		},
+		"ghcr.io/devcontainers/features/php:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"privileged": true,
+	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y composer default-mysql-client default-mysql-server && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*",
+	"forwardPorts": [
+		8000
+	],
+	"portsAttributes": {
+		"8000": {
+			"label": "App Server"
+		}
+	},
+	"remoteUser": "vscode"
+}
