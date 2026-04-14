@@ -22,8 +22,9 @@ cd my-app
 
 1. Copy `.env.example` to `.env`
 2. Install dev tools: `composer install`
-3. Start the dev server: `marko up`
-4. Visit http://localhost:8000
+3. In the dev container, Composer binaries from `vendor/bin` are added to `PATH`, so you can run `marko` directly.
+4. Start the dev server: `marko up`
+5. Visit http://localhost:8000
 
 ## Next Steps
 

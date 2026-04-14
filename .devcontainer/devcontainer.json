@@ -1,6 +1,9 @@
 {
 	"name": "codespaces-blank",
 	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+	"remoteEnv": {
+		"PATH": "${containerWorkspaceFolder}/my-app/vendor/bin:${containerEnv:PATH}"
+	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "lts"
