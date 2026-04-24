@@ -15,7 +15,12 @@
 	},
 	"privileged": true,
 	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y composer default-mysql-client default-mysql-server && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*",
-	"postStartCommand": "bash ${containerWorkspaceFolder}/setup-marko.sh",
+	"containerEnv": {
+    		"MARKO_PROJECT_NAME": "storefront",
+    		"MARKO_INSTALL_MODE": "skeleton",
+    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/security marko/testing"
+  	},
+  	"postCreateCommand": "bash .devcontainer/init-marko.sh",
 	"forwardPorts": [
 		8000
 	],
