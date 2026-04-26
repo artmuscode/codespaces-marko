@@ -149,10 +149,10 @@ install_skeleton() {
 	local target="${WORKSPACE_DIR}/${project_name}"
 	prepare_target "${target}"
 
-	info "composer create-project marko/skeleton ${project_name}"
+	info "composer create-project marko/skeleton ${project_name}" >&2
 
 	# shellcheck disable=SC2086
-	( cd "${WORKSPACE_DIR}" && composer create-project marko/skeleton "${project_name}" ${MARKO_COMPOSER_FLAGS} )
+	( cd "${WORKSPACE_DIR}" && composer create-project marko/skeleton "${project_name}" ${MARKO_COMPOSER_FLAGS} ) >&2
 	echo "${target}"
 }
 
@@ -162,7 +162,7 @@ install_framework() {
 	prepare_target "${target}"
 	mkdir -p "${target}"
 
-	info "Bootstrapping bare composer project at ${target}"
+	info "Bootstrapping bare composer project at ${target}" >&2
 
 	# shellcheck disable=SC2086
 	(
@@ -172,12 +172,12 @@ install_framework() {
 				--type=project \
 				--require="php:^8.5" \
 				${MARKO_COMPOSER_FLAGS} >/dev/null
-	)
+	) >&2
 
-	info "composer require marko/framework"
+	info "composer require marko/framework" >&2
 
 	# shellcheck disable=SC2086
-	( cd "${target}" && composer require marko/framework ${MARKO_COMPOSER_FLAGS} )
+	( cd "${target}" && composer require marko/framework ${MARKO_COMPOSER_FLAGS} ) >&2
 	echo "${target}"
 }
 
