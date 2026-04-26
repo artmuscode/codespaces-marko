@@ -215,14 +215,33 @@ install_optional_packages() {
 	fi
 }
 
+devcontainer_dir() {
+	cd "$(dirname "${BASH_SOURCE[0]}")" && pwd
+}
+
 copy_compose() {
 	local project_dir="$1"
-	local src
-	src="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/compose.yml"
-	local dest="${project_dir}/compose.yml"
+	local src dest
+	src="$(devcontainer_dir)/compose.yml"
+	dest="${project_dir}/compose.yml"
 	if [[ -f "${src}" && ! -f "${dest}" ]]; then
 		cp "${src}" "${dest}"
 		ok "compose.yml copied to ${dest}"
+	fi
+}
+
+setup_node() {
+	local project_dir="$1"
+	local src dest
+	src="$(devcontainer_dir)/package.json"
+	dest="${project_dir}/package.json"
+	if [[ -f "${src}" && ! -f "${dest}" ]]; then
+		cp "${src}" "${dest}"
+		ok "package.json copied to ${dest}"
+	fi
+	if [[ -f "${dest}" ]]; then
+		info "npm install" >&2
+		( cd "${project_dir}" && npm install ) >&2
 	fi
 }
 
@@ -249,6 +268,7 @@ main() {
 		# shellcheck disable=SC2086
 		( cd "${existing_dir}" && composer install ${MARKO_COMPOSER_FLAGS} )
 		copy_compose "${existing_dir}"
+		setup_node "${existing_dir}"
 		register_path "${existing_dir}"
 		ok "Done."
 		exit 0
@@ -264,6 +284,7 @@ main() {
 
 	install_optional_packages "${project_dir}"
 	copy_compose "${project_dir}"
+	setup_node "${project_dir}"
 	register_path "${project_dir}"
 
 	hr

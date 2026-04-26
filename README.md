@@ -5,8 +5,9 @@ A ready-to-use dev container for [Marko.build](https://marko.build) projects. Op
 ## What's included
 
 - PHP (latest) + Composer
-- Node.js (LTS)
-- MySQL (client + server)
+- Node.js (LTS) + Tailwind CSS
+- MySQL or PostgreSQL (via Docker Compose)
+- Redis (via Docker Compose)
 - Docker-in-Docker
 - Port 8000 forwarded for the dev server
 
@@ -42,6 +43,40 @@ The `marko` CLI is available globally after the build:
 
 ```bash
 marko        # list available commands
+```
+
+## Docker Compose services
+
+A `compose.yml` is automatically copied into your project on first build. It defines the available backing services:
+
+| Service | Image | Default port |
+|---|---|---|
+| `mysql` | `mysql:8.0` | `3306` |
+| `postgres` | `postgres:16-alpine` | `5432` |
+| `redis` | `redis:7-alpine` | `6379` |
+
+MySQL and Redis are enabled by default. PostgreSQL is commented out. To switch databases, open `compose.yml` in your project, comment out the `mysql` block, and uncomment `postgres` (and the `postgres-data` volume).
+
+`marko up` will start whichever services are active.
+
+Default database credentials:
+
+| Field | Value |
+|---|---|
+| Host | `localhost` |
+| Database | project name (e.g. `palettes`) |
+| User | `marko` |
+| Password | `marko` |
+| Root password | `root` |
+
+## Node / Tailwind CSS
+
+A `package.json` is automatically copied into your project on first build with [Tailwind CSS v4](https://tailwindcss.com) included as a dev dependency. `npm install` runs automatically during setup.
+
+To add further packages:
+
+```bash
+npm install <package>
 ```
 
 ## Rebuilding
