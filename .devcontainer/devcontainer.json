@@ -2,7 +2,7 @@
 	"name": "codespaces-blank",
 	"image": "mcr.microsoft.com/devcontainers/base:debian-12",
 	"remoteEnv": {
-		"PATH": "${containerWorkspaceFolder}/my-app/vendor/bin:${containerEnv:PATH}"
+		"PATH": "${containerWorkspaceFolder}/palettes/vendor/bin:${containerEnv:PATH}"
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {

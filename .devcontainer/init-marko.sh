@@ -215,6 +215,17 @@ install_optional_packages() {
 	fi
 }
 
+register_path() {
+	local vendor_bin="$1/vendor/bin"
+	local marker="# marko vendor/bin"
+	if ! grep -qF "${marker}" ~/.bashrc 2>/dev/null; then
+		printf '\n%s\nexport PATH="%s:$PATH"\n' "${marker}" "${vendor_bin}" >> ~/.bashrc
+	else
+		# Update in case project dir changed
+		sed -i "s|export PATH=\".*/vendor/bin:\\\$PATH\"|export PATH=\"${vendor_bin}:\$PATH\"|" ~/.bashrc
+	fi
+}
+
 main() {
 	print_config
 	check_prereqs
@@ -226,6 +237,7 @@ main() {
 		info "Running composer install to sync dependencies."
 		# shellcheck disable=SC2086
 		( cd "${existing_dir}" && composer install ${MARKO_COMPOSER_FLAGS} )
+		register_path "${existing_dir}"
 		ok "Done."
 		exit 0
 	fi
@@ -239,6 +251,7 @@ main() {
 	esac
 
 	install_optional_packages "${project_dir}"
+	register_path "${project_dir}"
 
 	hr
 	ok "Marko project ready at: ${project_dir}"
@@ -246,7 +259,7 @@ main() {
 	echo "Next steps:"
 	echo "  cd ${project_dir}"
 	[[ "${MARKO_INSTALL_MODE}" == "skeleton" ]] && echo "  php -S localhost:8000 -t public"
-	echo "  ./vendor/bin/marko    # list registered commands"
+	echo "  marko    # list registered commands"
 	hr
 }
 
