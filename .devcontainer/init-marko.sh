@@ -215,6 +215,17 @@ install_optional_packages() {
 	fi
 }
 
+copy_compose() {
+	local project_dir="$1"
+	local src
+	src="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/compose.yml"
+	local dest="${project_dir}/compose.yml"
+	if [[ -f "${src}" && ! -f "${dest}" ]]; then
+		cp "${src}" "${dest}"
+		ok "compose.yml copied to ${dest}"
+	fi
+}
+
 register_path() {
 	local vendor_bin="$1/vendor/bin"
 	local marker="# marko vendor/bin"
@@ -237,6 +248,7 @@ main() {
 		info "Running composer install to sync dependencies."
 		# shellcheck disable=SC2086
 		( cd "${existing_dir}" && composer install ${MARKO_COMPOSER_FLAGS} )
+		copy_compose "${existing_dir}"
 		register_path "${existing_dir}"
 		ok "Done."
 		exit 0
@@ -251,6 +263,7 @@ main() {
 	esac
 
 	install_optional_packages "${project_dir}"
+	copy_compose "${project_dir}"
 	register_path "${project_dir}"
 
 	hr
