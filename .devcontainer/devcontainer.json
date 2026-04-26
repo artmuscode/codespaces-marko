@@ -1,8 +1,8 @@
 {
 	"name": "codespaces-blank",
-	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+	"image": "mcr.microsoft.com/devcontainers/base:debian-12",
 	"remoteEnv": {
-		"PATH": "${containerWorkspaceFolder}/my-app/vendor/bin:${containerEnv:PATH}"
+		"PATH": "${containerWorkspaceFolder}/${containerEnv:MARKO_PROJECT_NAME}/vendor/bin:${containerEnv:PATH}"
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
@@ -14,13 +14,13 @@
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
 	"privileged": true,
-	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y composer default-mysql-client default-mysql-server && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*",
 	"containerEnv": {
-    		"MARKO_PROJECT_NAME": "storefront",
+    		"MARKO_PROJECT_NAME": "palettes",
     		"MARKO_INSTALL_MODE": "skeleton",
     		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/security marko/testing"
   	},
-  	"postCreateCommand": "bash .devcontainer/init-marko.sh",
+	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends default-mysql-client postgresql-client && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* && bash .devcontainer/init-marko.sh",
+	"postStartCommand": "bash .devcontainer/init-marko.sh",
 	"forwardPorts": [
 		8000
 	],
