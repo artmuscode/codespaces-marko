@@ -21,7 +21,8 @@ cd palettes
 marko up
 ```
 
-4. Open `http://localhost:8000` in your browser when in VS Code Desktop devcontainer. Or if in Github Codespace the goto PORTS tab and select the proper forwarded port. Click to launch.
+4. Open `http://localhost:8000` in your browser when in VS Code Desktop devcontainer. You might need a add additional config information to change host to 0.0.0.0.
+Or if in Github Codespace the goto PORTS tab and select the proper forwarded port. Click to launch.
 
 ## Configuration
 
