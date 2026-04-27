@@ -18,12 +18,12 @@ A ready-to-use dev container for [Marko.build](https://marko.build) projects. Op
 3. Once ready, `cd` into your project and start the dev server:
 
 ```bash
-cd palettes
+cd project-name
 marko up
 ```
 
 4. Open on Mac Desktop/Windows/Linux `http://localhost:8000` in your browser when using VS Code Desktop you'll need to change "host" to 0.0.0.0 in config. 
-5. When using Github Codespace goto PORTS tab and select the proper forwarded port (8000). Click to launch in browser.
+5. When using Github Codespace no need to change "host" value, goto PORTS tab and select the proper forwarded port (8000). Click to launch in browser.
 
 ## Configuration
 
@@ -31,7 +31,7 @@ All project settings live in `.devcontainer/devcontainer.json` under `containerE
 
 | Variable | Default | Description |
 |---|---|---|
-| `MARKO_PROJECT_NAME` | `palettes` | Folder name for the scaffolded project |
+| `MARKO_PROJECT_NAME` | `project-name` | Folder name for the scaffolded project |
 | `MARKO_INSTALL_MODE` | `skeleton` | `skeleton` or `framework` |
 | `MARKO_PACKAGES` | see file | Space-separated Composer packages to install |
 
@@ -64,7 +64,7 @@ Default database credentials:
 | Field | Value |
 |---|---|
 | Host | `localhost` |
-| Database | project name (e.g. `palettes`) |
+| Database | project name (e.g. `project-name`) |
 | User | `marko` |
 | Password | `marko` |
 | Root password | `root` |
