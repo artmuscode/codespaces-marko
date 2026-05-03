@@ -15,7 +15,7 @@
 	},
 	"privileged": true,
 	"containerEnv": {
-    		"MARKO_PROJECT_NAME": "palettes",
+    		"MARKO_PROJECT_NAME": "project-name",
     		"MARKO_INSTALL_MODE": "skeleton",
     		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql marko/database-pgsql"
   	},
