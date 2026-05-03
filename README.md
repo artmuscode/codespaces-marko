@@ -52,7 +52,7 @@ Deskop VS Code:
 
     ![Step 2](vs-code-instructions/step-2.jpg)
 
-    - Edit section below in .devcontainer/devcontainer.json and save changes
+    Edit section below in .devcontainer/devcontainer.json and save changes
 
     Snippet area to change in devcontainer.json
     "containerEnv": {
