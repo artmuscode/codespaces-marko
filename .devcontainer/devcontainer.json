@@ -17,7 +17,7 @@
 	"containerEnv": {
     		"MARKO_PROJECT_NAME": "palettes",
     		"MARKO_INSTALL_MODE": "skeleton",
-    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/security marko/testing"
+    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql marko/database-pgsql"
   	},
 	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends default-mysql-client postgresql-client && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* && bash .devcontainer/init-marko.sh",
 	"postStartCommand": "bash .devcontainer/init-marko.sh",

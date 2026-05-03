@@ -13,25 +13,79 @@ A ready-to-use dev container for [Marko.build](https://marko.build) projects. Op
 
 ## Getting started
 
-1. Open this repo in VS Code and choose **Reopen in Container** when prompted (or run `Dev Containers: Reopen in Container` from the command palette).
-2. The container will build and automatically scaffold your Marko project. This takes a few minutes on first run.
-3. Once ready, `cd` into your project and start the dev server:
+Github Codespaces:
 
-```bash
-cd palettes
-marko up
-```
+1. Fork the https://github.com/artmuscode/codespaces-marko
 
-4. Open `http://localhost:8000` in your browser when in VS Code Desktop devcontainer. You might need a add additional config information to change host to 0.0.0.0.
-Or if in Github Codespace the goto PORTS tab and select the proper forwarded port. Click to launch.
+2. Edit section below in .devcontainer/devcontainer.json and save changes
 
-## Configuration
+"containerEnv": {
+    		"MARKO_PROJECT_NAME": "palettes",
+    		"MARKO_INSTALL_MODE": "skeleton",
+    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql marko/database-pgsql"
+  	},
+
+3. Edit .devcontainer/compose.yml and/or package.json to add required docker images/containers. Add NODE packages to package.json/ additional scripts etc. Save changes.
+
+4. Open Github hamaburger menu Top Left -> select Codespaces
+
+5. Click Green Button Top Right "New codespace"
+
+6. Create a new codespace
+-> Select a repository: "username/codespaces-marko"
+-> Branch: main
+-> Region: Default (US East)
+-> Machine Type: Many options
+
+7. Click Green Button "Create codespace"
+
+8. New Window Open
+-> VS Code like editor
+-> Devcontainer will automatically start build process this will take a few minutes. Marko will be auto started along with docker containers defined in compose.yml and node packages will also install.
+
+
+Deskop VS Code:
+
+1. Clone this repository locally
+    
+2. Open the folder in VS Code 
+
+    ![Step 2](step-2.jpg)
+
+    - Edit section below in .devcontainer/devcontainer.json and save changes
+
+    Snippet area to change in devcontainer.json
+    "containerEnv": {
+    		"MARKO_PROJECT_NAME": "palettes",
+    		"MARKO_INSTALL_MODE": "skeleton",
+    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql marko/database-pgsql"
+  	},
+
+    Edit .devcontainer/compose.yml and/or package.json to add required docker images/containers. Add NODE packages to package.json/ additional scripts etc. Save changes.
+
+
+3. Click Show Commands
+    ![Step 3](step-3.jpg)
+
+
+4. Click Dev Containers: Rebuild and Reopen in Container
+    ![Step 4](step-4.jpg)
+
+5. VS Code will start devcontainer build, this will take a few minutes
+
+6. Marko will be auto started along with docker containers defined in compose.yml and node packages will also install.
+
+* Note running from Desktop VS Code requires Marko "host" configuration to be changes to "0.0.0.0". 
+You will need to first run -> marko down -> add host 0.0.0.0 to marko project config -> then run marko up. 
+
+
+## General Configuration
 
 All project settings live in `.devcontainer/devcontainer.json` under `containerEnv`:
 
 | Variable | Default | Description |
 |---|---|---|
-| `MARKO_PROJECT_NAME` | `palettes` | Folder name for the scaffolded project |
+| `MARKO_PROJECT_NAME` | `project-name` | Folder name for the scaffolded project |
 | `MARKO_INSTALL_MODE` | `skeleton` | `skeleton` or `framework` |
 | `MARKO_PACKAGES` | see file | Space-separated Composer packages to install |
 
