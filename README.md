@@ -65,15 +65,17 @@ Deskop VS Code:
 
 
 3. Click Show Commands
+   
     ![Step 3](vs-code-instructions/step-3.jpg)
 
 
-4. Click Dev Containers: Rebuild and Reopen in Container
+5. Click Dev Containers: Rebuild and Reopen in Container
+
     ![Step 4](vs-code-instructions/step-4.jpg)
 
-5. VS Code will start devcontainer build, this will take a few minutes
+7. VS Code will start devcontainer build, this will take a few minutes
 
-6. Marko will be auto started along with docker containers defined in compose.yml and node packages will also install.
+8. Marko will be auto started along with docker containers defined in compose.yml and node packages will also install.
 
 * Note running from Desktop VS Code requires Marko "host" configuration to be changes to "0.0.0.0". 
 You will need to first run -> marko down -> add host 0.0.0.0 to marko project config -> then run marko up. 
