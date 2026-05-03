@@ -50,7 +50,7 @@ Deskop VS Code:
     
 2. Open the folder in VS Code 
 
-    ![Step 2](step-2.jpg)
+    ![Step 2](vs-code-instructions/step-2.jpg)
 
     - Edit section below in .devcontainer/devcontainer.json and save changes
 
@@ -65,11 +65,11 @@ Deskop VS Code:
 
 
 3. Click Show Commands
-    ![Step 3](step-3.jpg)
+    ![Step 3](vs-code-instructions/step-3.jpg)
 
 
 4. Click Dev Containers: Rebuild and Reopen in Container
-    ![Step 4](step-4.jpg)
+    ![Step 4](vs-code-instructions/step-4.jpg)
 
 5. VS Code will start devcontainer build, this will take a few minutes
 
