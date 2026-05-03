@@ -13,9 +13,7 @@ A ready-to-use dev container for [Marko.build](https://marko.build) projects. Op
 
 ## Getting started
 
-1. Open this repo in VS Code and choose **Reopen in Container** when prompted (or run `Dev Containers: Reopen in Container` from the command palette).
-2. The container will build and automatically scaffold your Marko project. This takes a few minutes on first run.
-3. Once ready, `cd` into your project and start the dev server:
+Github Codespaces:
 
 ```bash
 cd project-name
@@ -25,7 +23,7 @@ marko up
 4. Open on Mac Desktop/Windows/Linux `http://localhost:8000` in your browser when using VS Code Desktop you'll need to change "host" to 0.0.0.0 in config. 
 5. When using Github Codespace no need to change "host" value, goto PORTS tab and select the proper forwarded port (8000). Click to launch in browser.
 
-## Configuration
+## General Configuration
 
 All project settings live in `.devcontainer/devcontainer.json` under `containerEnv`:
 
