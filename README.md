@@ -77,7 +77,7 @@ Deskop VS Code:
 
 8. Marko will be auto started along with docker containers defined in compose.yml and node packages will also install.
 
-* Note running from Desktop VS Code requires Marko "host" configuration to be changes to "0.0.0.0". 
+* Note running from Desktop VS Code requires Marko "host" configuration to be changed to "0.0.0.0". 
 You will need to first run -> marko down -> add host 0.0.0.0 to marko project config -> then run marko up. 
 
 
