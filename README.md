@@ -27,7 +27,7 @@ Github Codespaces:
 
 3. Edit .devcontainer/compose.yml and/or package.json to add required docker images/containers. Add NODE packages to package.json/ additional scripts etc. Save changes.
 
-4. Open Github hamaburger menu Top Left -> select Codespaces
+4. Open Github hamburger menu Top Left -> select Codespaces
 
 5. Click Green Button Top Right "New codespace"
 
