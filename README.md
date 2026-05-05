@@ -25,6 +25,8 @@ Github Codespaces:
     		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql"
   	},
 
+*note - If you plan to use a postgres DB replace "marko/database-mysql" with "marko/database-pgsql", plus change database container in compose.yml
+
 3. Edit .devcontainer/compose.yml and/or package.json to add required docker images/containers. Add NODE packages to package.json/ additional scripts etc. Save changes.
 
 4. Open Github hamburger menu Top Left -> select Codespaces
