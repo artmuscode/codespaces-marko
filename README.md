@@ -66,9 +66,10 @@ Deskop VS Code:
   	},
 
     Edit .devcontainer/compose.yml and/or package.json to add required docker images/containers. Add NODE packages to package.json/ additional scripts etc. Save changes.
+
     *note - If you plan to use a postgres DB replace "marko/database-mysql" with "marko/database-pgsql", plus change database container in compose.yml
 
-3. Click Show Commands
+4. Click Show Commands
    
     ![Step 3](vs-code-instructions/step-3.jpg)
 
