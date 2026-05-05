@@ -22,7 +22,7 @@ Github Codespaces:
 "containerEnv": {
     		"MARKO_PROJECT_NAME": "palettes",
     		"MARKO_INSTALL_MODE": "skeleton",
-    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql marko/database-pgsql"
+    		"MARKO_PACKAGES": "marko/database marko/cache-redis marko/session marko/view marko/view-latte marko/security marko/testing marko/database-mysql"
   	},
 
 3. Edit .devcontainer/compose.yml and/or package.json to add required docker images/containers. Add NODE packages to package.json/ additional scripts etc. Save changes.
