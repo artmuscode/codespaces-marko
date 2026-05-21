@@ -59,6 +59,41 @@ require_cmd() {
 	}
 }
 
+ensure_docker_daemon() {
+	# Best-effort startup for docker-in-docker environments used by Codespaces/devcontainers.
+	if ! command -v docker >/dev/null 2>&1; then
+		warn "Docker CLI not found; skipping daemon bootstrap."
+		return 0
+	fi
+
+	if docker info >/dev/null 2>&1; then
+		ok "Docker daemon is available."
+		return 0
+	fi
+
+	info "Docker daemon is not reachable; attempting to start it."
+
+	if command -v service >/dev/null 2>&1; then
+		sudo service docker start >/dev/null 2>&1 || true
+	fi
+
+	if docker info >/dev/null 2>&1; then
+		ok "Docker daemon started via service command."
+		return 0
+	fi
+
+	if [[ -x "/etc/init.d/docker" ]]; then
+		sudo /etc/init.d/docker start >/dev/null 2>&1 || true
+	fi
+
+	if docker info >/dev/null 2>&1; then
+		ok "Docker daemon started via init.d script."
+		return 0
+	fi
+
+	warn "Docker daemon is still unreachable. Rebuild the devcontainer if compose pulls fail."
+}
+
 check_prereqs() {
 	info "Checking prerequisites"
 	require_cmd php
@@ -258,6 +293,7 @@ register_path() {
 
 main() {
 	print_config
+	ensure_docker_daemon
 	check_prereqs
 	validate_config
 
@@ -298,3 +334,4 @@ main() {
 }
 
 main "$@"
+
