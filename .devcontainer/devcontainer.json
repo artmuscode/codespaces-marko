@@ -5,15 +5,15 @@
 		"PATH": "${containerWorkspaceFolder}/${containerEnv:MARKO_PROJECT_NAME}/vendor/bin:${containerEnv:PATH}"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {
+		"ghcr.io/devcontainers/features/node:2.0.0": {
 			"version": "lts"
 		},
 		"ghcr.io/devcontainers/features/php:1": {
 			"version": "latest"
 		},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
 	},
-	"privileged": true,
+	"privileged": false,
 	"containerEnv": {
     		"MARKO_PROJECT_NAME": "project-name",
     		"MARKO_INSTALL_MODE": "skeleton",
