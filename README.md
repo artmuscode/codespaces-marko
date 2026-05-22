@@ -113,9 +113,9 @@ A `compose.yml` is automatically copied into your project on first build. It def
 
 | Service | Image | Default port |
 |---|---|---|
-| `mysql` | `mysql:8.0` | `3306` |
+| `mysql` | `mysql:8.4` | `3306` |
 | `postgres` | `postgres:16-alpine` | `5432` |
-| `redis` | `redis:7-alpine` | `6379` |
+| `redis` | `redis:7.2-alpine` | `6379` |
 
 MySQL and Redis are enabled by default. PostgreSQL is commented out. To switch databases, open `compose.yml` in your project, comment out the `mysql` block, and uncomment `postgres` (and the `postgres-data` volume).
 
